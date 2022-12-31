@@ -101,6 +101,9 @@ def pageCollect(url2):
         
 #Finds total number of product store pages
 #Returns string ie: 'Page 1 of x (x = number of pages)'
+URL1 = 'https://books.toscrape.com/catalogue/frankenstein_20/index.html'
+page = requests.get(URL1, headers = headers)
+soup = BS(page.content, 'html.parser')
 pageNum = soup.find("ul", {"class": "pager"}).text.strip()
 pageTotal = int(pageNum[pageNum.index('of') + 3 : pageNum.index('next')])
 
